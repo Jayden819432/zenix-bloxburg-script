@@ -1,11 +1,20 @@
-
 -- Bloxburg Epic Thing - Complete Professional Script v3.1.0D
 -- All BET Standard + PBET Premium Features Implementation
 
--- Environment validation
-if not game or not game:GetService then
+-- Environment validation with better executor compatibility
+local success, result = pcall(function()
+    return game and game:GetService("Players")
+end)
+
+if not success or not result then
     warn("❌ This script must be executed within Roblox!")
     warn("🎮 Please run this script in a Roblox executor while in Welcome to Bloxburg")
+    return
+end
+
+-- Additional safety check
+if not game.PlaceId or game.PlaceId == 0 then
+    warn("⚠️ Please run this script in a Roblox game!")
     return
 end
 
